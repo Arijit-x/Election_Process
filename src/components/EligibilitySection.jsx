@@ -54,7 +54,7 @@ const eligibilityData = {
 };
 
 const CountryCard = ({ data }) => {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   return (
     <div
@@ -204,7 +204,7 @@ const CountryCard = ({ data }) => {
 
 const EligibilitySection = () => {
   return (
-    <section style={{ marginTop: 'var(--spacing-xl)' }}>
+    <section id="eligibility" style={{ marginTop: 'var(--spacing-xl)' }}>
       {/* Section header */}
       <div style={{
         display: 'flex', alignItems: 'center', gap: 'var(--spacing-md)',
@@ -224,7 +224,7 @@ const EligibilitySection = () => {
             Voting <span className="text-gradient">Eligibility Rules</span>
           </h2>
           <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
-            Click a country to expand the full rules
+            Click a card to collapse or expand the rules
           </p>
         </div>
       </div>

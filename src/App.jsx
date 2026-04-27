@@ -5,7 +5,7 @@ import StepDetail from './components/StepDetail';
 import Particles from './components/Particles';
 import EligibilitySection from './components/EligibilitySection';
 import { electionSteps } from './data/electionData';
-import { LayoutList, BookOpen, ChevronLeft } from 'lucide-react';
+import { LayoutList, BookOpen, ChevronLeft, ChevronDown, Shield } from 'lucide-react';
 import './App.css';
 
 function App() {
@@ -53,6 +53,47 @@ function App() {
           totalSteps={electionSteps.length}
           currentStep={activeIndex}
         />
+
+        {/* ── Scroll CTA — draws attention to the eligibility section below ── */}
+        <div
+          onClick={() => document.getElementById('eligibility')?.scrollIntoView({ behavior: 'smooth' })}
+          style={{
+            marginTop: 'var(--spacing-md)',
+            marginBottom: 'var(--spacing-sm)',
+            padding: '12px 20px',
+            background: 'linear-gradient(135deg, rgba(67,97,238,0.12), rgba(247,37,133,0.08))',
+            border: '1px solid rgba(67,97,238,0.25)',
+            borderRadius: 'var(--radius-lg)',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            transition: 'all var(--transition-fast)',
+            animation: 'fadeSlideUp 0.6s 0.3s both',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = 'linear-gradient(135deg, rgba(67,97,238,0.2), rgba(247,37,133,0.14))';
+            e.currentTarget.style.borderColor = 'rgba(67,97,238,0.5)';
+            e.currentTarget.style.transform = 'translateY(-1px)';
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = 'linear-gradient(135deg, rgba(67,97,238,0.12), rgba(247,37,133,0.08))';
+            e.currentTarget.style.borderColor = 'rgba(67,97,238,0.25)';
+            e.currentTarget.style.transform = 'none';
+          }}
+          role="button"
+          aria-label="Scroll to Voting Eligibility Rules"
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <Shield size={18} color="var(--color-accent)" />
+            <span style={{ fontSize: '0.9rem', color: 'var(--color-text-main)', fontWeight: 500 }}>
+              📋 Who can vote? See Eligibility Rules below
+            </span>
+          </div>
+          <div style={{ animation: 'bounceDown 1.4s ease-in-out infinite', color: 'var(--color-accent)' }}>
+            <ChevronDown size={20} />
+          </div>
+        </div>
 
         {/* Desktop: two columns. Mobile: one panel at a time */}
         <div className="main-content">
