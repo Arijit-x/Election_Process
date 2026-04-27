@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Timeline from './components/Timeline';
 import StepDetail from './components/StepDetail';
 import Particles from './components/Particles';
+import EligibilitySection from './components/EligibilitySection';
 import { electionSteps } from './data/electionData';
 import { LayoutList, BookOpen, ChevronLeft } from 'lucide-react';
 import './App.css';
@@ -181,6 +182,9 @@ function App() {
             <ChevronLeft size={18} style={{ transform: 'rotate(180deg)' }} />
           </button>
         </div>
+
+        {/* Voting Eligibility Rules */}
+        <EligibilitySection />
       </div>
 
       {/* Mobile bottom tab bar */}
