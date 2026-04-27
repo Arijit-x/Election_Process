@@ -226,3 +226,53 @@ h1,h2,h3,h4,h5,h6 {
 .gap-sm { gap: var(--spacing-sm); }
 .gap-md { gap: var(--spacing-md); }
 .gap-lg { gap: var(--spacing-lg); }
+
+/* ── Action buttons in StepDetail ───────── */
+.action-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 13px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+/* Secondary (default dark) */
+.action-btn-secondary {
+  background: var(--color-surface-active);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-main);
+}
+
+.action-btn-secondary:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-glow), 0 4px 16px rgba(67,97,238,0.25);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+/* Primary (blue gradient) */
+.action-btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), #304be0);
+  border: none;
+  color: #fff;
+  box-shadow: 0 4px 15px var(--color-primary-glow);
+}
+
+.action-btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+  box-shadow: 0 0 0 3px var(--color-primary-glow), 0 8px 25px rgba(67,97,238,0.45);
+  transform: translateY(-2px);
+}

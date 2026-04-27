@@ -133,40 +133,8 @@ const StepDetail = ({ step, stepIndex }) => {
               <button
                 key={i}
                 onClick={() => handleAction(action.url)}
-                style={{
-                  background: action.primary
-                    ? 'linear-gradient(135deg, var(--color-primary), #304be0)'
-                    : 'var(--color-surface-active)',
-                  color: '#fff',
-                  border: action.primary ? 'none' : '1px solid var(--color-border)',
-                  padding: '13px 18px',
-                  borderRadius: 'var(--radius-md)',
-                  cursor: 'pointer',
-                  fontSize: '0.9rem',
-                  fontWeight: 500,
-                  fontFamily: 'var(--font-body)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '8px',
-                  transition: 'all var(--transition-fast)',
-                  textAlign: 'left',
-                  width: '100%',
-                  boxShadow: action.primary ? '0 4px 15px var(--color-primary-glow)' : 'none',
-                  animation: `fadeSlideUp ${0.4 + i * 0.08}s both`,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = action.primary
-                    ? '0 8px 25px var(--color-primary-glow)'
-                    : '0 4px 15px rgba(0,0,0,0.3)';
-                  if (!action.primary) e.currentTarget.style.borderColor = 'var(--color-border-glow)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'none';
-                  e.currentTarget.style.boxShadow = action.primary ? '0 4px 15px var(--color-primary-glow)' : 'none';
-                  if (!action.primary) e.currentTarget.style.borderColor = 'var(--color-border)';
-                }}
+                className={`action-btn ${action.primary ? 'action-btn-primary' : 'action-btn-secondary'}`}
+                style={{ animation: `fadeSlideUp ${0.4 + i * 0.08}s both` }}
               >
                 <span>{action.label}</span>
                 <ExternalLink size={15} style={{ flexShrink: 0, opacity: 0.8 }} />
