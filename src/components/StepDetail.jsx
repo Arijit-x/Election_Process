@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { Info, ExternalLink, ClipboardList, Zap } from 'lucide-react';
 
 const StepDetail = ({ step, stepIndex }) => {
@@ -145,6 +146,26 @@ const StepDetail = ({ step, stepIndex }) => {
       )}
     </div>
   );
+};
+
+StepDetail.propTypes = {
+  step: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    dateRange: PropTypes.string.isRequired,
+    icon: PropTypes.elementType.isRequired,
+    shortDescription: PropTypes.string,
+    fullDescription: PropTypes.string,
+    requirements: PropTypes.arrayOf(PropTypes.string),
+    actions: PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        primary: PropTypes.bool.isRequired,
+        url: PropTypes.string.isRequired,
+      })
+    ),
+  }),
+  stepIndex: PropTypes.number,
 };
 
 export default StepDetail;

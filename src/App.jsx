@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Header from './components/Header';
 import Timeline from './components/Timeline';
 import StepDetail from './components/StepDetail';
@@ -17,12 +17,13 @@ function App() {
   const activeStep = electionSteps[activeIndex];
 
   // When user picks a step on mobile, auto-switch to detail view
-  const handleStepSelect = (id) => {
+  const handleStepSelect = useCallback((id) => {
     setActiveStepId(id);
     setMobileView('detail');
-  };
+  }, []);
 
   // Keyboard navigation (desktop)
+
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {

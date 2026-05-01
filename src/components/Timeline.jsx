@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Timeline = ({ steps, activeStepId, onStepSelect }) => {
+const Timeline = React.memo(({ steps, activeStepId, onStepSelect }) => {
   const activeIndex = steps.findIndex(s => s.id === activeStepId);
 
   return (
@@ -103,6 +104,29 @@ const Timeline = ({ steps, activeStepId, onStepSelect }) => {
       </div>
     </div>
   );
+});
+
+Timeline.propTypes = {
+  steps: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      dateRange: PropTypes.string.isRequired,
+      icon: PropTypes.elementType.isRequired,
+      shortDescription: PropTypes.string,
+      fullDescription: PropTypes.string,
+      requirements: PropTypes.arrayOf(PropTypes.string),
+      actions: PropTypes.arrayOf(
+        PropTypes.shape({
+          label: PropTypes.string.isRequired,
+          primary: PropTypes.bool.isRequired,
+          url: PropTypes.string.isRequired,
+        })
+      ),
+    })
+  ).isRequired,
+  activeStepId: PropTypes.string.isRequired,
+  onStepSelect: PropTypes.func.isRequired,
 };
 
 export default Timeline;

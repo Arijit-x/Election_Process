@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { CheckCircle, XCircle, AlertTriangle, Flag, ChevronDown, ChevronUp, Shield } from 'lucide-react';
 
 const eligibilityData = {
@@ -200,6 +201,21 @@ const CountryCard = ({ data }) => {
       </div>
     </div>
   );
+};
+
+CountryCard.propTypes = {
+  data: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    glow: PropTypes.string.isRequired,
+    eligible: PropTypes.arrayOf(PropTypes.string).isRequired,
+    disqualified: PropTypes.arrayOf(PropTypes.string).isRequired,
+    notes: PropTypes.arrayOf(PropTypes.string).isRequired,
+    source: PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 const EligibilitySection = () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const Particles = () => {
+const Particles = React.memo(() => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -75,6 +75,6 @@ const Particles = () => {
       style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}
     />
   );
-};
+});
 
 export default Particles;

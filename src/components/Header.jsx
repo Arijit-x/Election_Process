@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Vote, Globe } from 'lucide-react';
 
-const Header = ({ totalSteps, currentStep }) => {
+const Header = React.memo(({ totalSteps, currentStep }) => {
   const progress = ((currentStep + 1) / totalSteps) * 100;
 
   return (
@@ -76,6 +77,11 @@ const Header = ({ totalSteps, currentStep }) => {
       </div>
     </header>
   );
+});
+
+Header.propTypes = {
+  totalSteps: PropTypes.number.isRequired,
+  currentStep: PropTypes.number.isRequired,
 };
 
 export default Header;
